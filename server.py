@@ -2,6 +2,19 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Union, List
 import joblib
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI(title="KMeans Clustering API", version="1.1.0")
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # You can restrict this to a list of allowed origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 from embedder___ import embed  # Reuse your existing embedding function
 
